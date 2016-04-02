@@ -1,0 +1,23 @@
+{
+  "name": "gulp-sass-autoinclude",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run mocha test/*.js",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  },
+  "author": "Mitsutoshi, Watanabe",
+  "license": "MIT",
+  "devDependencies": {
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7",
+    "lodash": "^4.7.0",
+    "path": "^0.12.7",
+    "through2": "^2.0.1"
+  }
+}
