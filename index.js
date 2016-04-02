@@ -1,6 +1,7 @@
-var through2 = require("through2"),
-  _ = require("lodash"),
-  gutil = require("gulp-util");
+var through2  = require("through2"),
+  _           = require("lodash"),
+  gutil       = require("gulp-util"),
+  decomment   = require('decomment');
 
 const PLUGIN_NAME = 'gulp-sass-autoinclude';
 
@@ -38,7 +39,8 @@ module.exports = function (param) {
     }
     // check if file.contents is a `Buffer`
     if (file.isBuffer() || file.isFile()) {
-      file.contents.toString().split("\n").forEach(function(line){
+      var file_text = decomment.text( file.contents.toString(), {safe:true} );
+      file_text.split("\n").forEach(function(line){
         var regex = new RegExp("\@mixin\\s+(" + options.mixin_prefix + "[0-9a-zA-Z\-_]+)");
         var m = line.match( regex )
         if ( m ) {

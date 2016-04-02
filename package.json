@@ -1,6 +1,6 @@
 {
   "name": "gulp-sass-autoinclude",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
   "repository": "https://github.com/metheglin/gulp-sass-autoinclude",
@@ -15,6 +15,7 @@
     "mocha": "^2.4.5"
   },
   "dependencies": {
+    "decomment": "^0.8.6",
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.7",
     "lodash": "^4.7.0",
