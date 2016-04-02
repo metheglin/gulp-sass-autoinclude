@@ -1,13 +1,37 @@
 
 @mixin inc--test-block__pc {
   display: block;
+  width: 100%;
+  height: 100%;
 }
 @mixin inc--test-block__sp {
   display: block;
+  width: 100%;
+  height: 100%;
+}
+@mixin inc--test-block__tb {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+@mixin inc--test-block__pc__sp__tb {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 @mixin inc--red__pc {
   color: red;
 }
 @mixin inc--red__sp {
   color: red;
+}
+@mixin noprefix__pc {
+  position: absolute;
+  float: left;
+  top: 0;
+}
+@mixin noprefix__sp {
+  position: absolute;
+  float: left;
+  top: 0;
 }

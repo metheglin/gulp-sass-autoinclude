@@ -67,7 +67,11 @@ module.exports = function (param) {
         mixins.forEach(function(m){
           include_sentences += "." + m.class_name + " { @include " + m.mixin_name + "; }\n";
         })
-        var out = options.tag_template[tag].replace('$content$', include_sentences);
+        var out = include_sentences;
+        var template = options.tag_template[tag];
+        if ( template ) {
+          out = template.replace('$content$', include_sentences);
+        }
         output_list.push( out );
       });
       var txt = output_list.join("\n");
