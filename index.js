@@ -39,8 +39,10 @@ module.exports = function (param) {
     }
     // check if file.contents is a `Buffer`
     if (file.isBuffer() || file.isFile()) {
-      var file_text = decomment.text( file.contents.toString(), {safe:true} );
-      file_text.split("\n").forEach(function(line){
+      var code = file.contents.toString();
+      var file_text = decomment.text(code, {safe:true});
+      var EOL = decomment.getEOL(code);
+      file_text.split(EOL).forEach(function(line){
         var regex = new RegExp("\@mixin\\s+(" + options.mixin_prefix + "[0-9a-zA-Z\-_]+)");
         var m = line.match( regex )
         if ( m ) {
@@ -67,7 +69,7 @@ module.exports = function (param) {
       _.forIn( store, function(mixins, tag){
         var include_sentences = "";
         mixins.forEach(function(m){
-          include_sentences += "." + m.class_name + " { @include " + m.mixin_name + "; }\n";
+          include_sentences += "." + m.class_name + " { @include " + m.mixin_name + "; }" + EOL;
         })
         var out = include_sentences;
         var template = options.tag_template[tag];
@@ -76,7 +78,7 @@ module.exports = function (param) {
         }
         output_list.push( out );
       });
-      var txt = output_list.join("\n");
+      var txt = output_list.join(EOL);
       this.push(new gutil.File({
         base: "",
         path: options.output_filename,
